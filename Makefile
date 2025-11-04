@@ -6,7 +6,7 @@
 #    By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/13 16:38:52 by liferrei          #+#    #+#              #
-#    Updated: 2025/10/27 11:50:36 by liferrei         ###   ########.fr        #
+#    Updated: 2025/11/04 16:32:34 by liferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,14 @@ GREEN_BOLD	= \033[1;32m
 YELLOW_BOLD	= \033[1;33m
 RED_BOLD	= \033[1;31m
 
-NAME        = Philosophers
+NAME        = philo
 
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
 
 
-SRCS        =	src/parce.c \
+SRCS        =	src/parse.c \
+				src/utils.c \
             	main.c
 
 OBJS        = $(SRCS:.c=.o)

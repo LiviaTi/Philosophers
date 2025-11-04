@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parce.c                                            :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:46:10 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/04 16:17:57 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/04 16:33:51 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_isnumber(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!(str[i] >= '0' && str[i] >= '9'))
+		if (!(str[i] >= '0' && str[i] <= '9'))
 			return (0);
 		i++;
 	}
@@ -60,7 +60,7 @@ int	ft_parse_args(int argc, char **argv, t_rules *rules)
 		return (ft_print_error());
 	while (i < argc)
 	{
-		if (!ft_is_number(argv[i]))
+		if (!ft_isnumber(argv[i]))
 			return (ft_print_error());
 		if (ft_atol(argv[i]) <= 0)
 			return (ft_print_error());

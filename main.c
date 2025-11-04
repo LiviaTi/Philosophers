@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:32:49 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/04 16:30:41 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/04 19:08:02 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char *argv[])
 {
 	t_rules	rules;
 
-	if (!ft_parse_args(argc, argv, &rules))
+	if (!parse_args(argc, argv, &rules))
 		return (1);
 	
 	printf("✅ Arguments OK!\n");

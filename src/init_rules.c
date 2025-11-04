@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   init_rules.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/04 15:46:00 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/04 19:19:11 by liferrei         ###   ########.fr       */
+/*   Created: 2025/11/04 19:02:30 by liferrei          #+#    #+#             */
+/*   Updated: 2025/11/04 19:21:24 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	ft_print_error(t_rules *rules)
+int	init_rules(t_rules *rules)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	write(2, "Error\n", 6);
-	return (0);
-	if (rules && rules->forks)
+	rules->dead = 0;
+	rules->start_time = 0;
+	rules->forks = malloc(sizeof(pthread_mutex_t) * rules->num_philos);
+	if (!rules->forks)
+		return (ft_print_error(rules));
+	while (i < rules->num_philos)
 	{
-		while (i < rules->num_philos)
-		{
-			pthread_mutex_destroy(&rules->forks[i]);
-			i++;	
-		}
-		free (rules->forks);
-		rules->forks = NULL;
-		pthread_mutex_destroy(&rules->print_mutex);
+		if (pthread_mutex_init(&rules->forks[i], NULL) != 0)
+			return (ft_print_error(rules));
+		i++;
 	}
+	if (pthread_mutex_init(&rules->print_mutex, NULL) != 0)
+		return (ft_print_error(rules));
+	return (1);
 }

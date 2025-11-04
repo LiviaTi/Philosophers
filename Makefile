@@ -6,7 +6,7 @@
 #    By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/13 16:38:52 by liferrei          #+#    #+#              #
-#    Updated: 2025/11/04 16:32:34 by liferrei         ###   ########.fr        #
+#    Updated: 2025/11/04 19:13:26 by liferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ CFLAGS      = -Wall -Wextra -Werror
 
 SRCS        =	src/parse.c \
 				src/utils.c \
+				src/init_rules \
             	main.c
 
 OBJS        = $(SRCS:.c=.o)

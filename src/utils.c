@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:46:00 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/07 17:25:18 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:36:41 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ long	ft_get_time(void)
 
 	time_ms = 0;
 	gettimeofday(&current_time, NULL);
-	time_ms = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
+	time_ms = ((long)current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
 	return (time_ms);
 }
 

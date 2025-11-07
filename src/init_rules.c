@@ -6,13 +6,13 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 19:02:30 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/04 19:21:24 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:40:12 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	init_rules(t_rules *rules)
+int	ft_init_rules(t_rules *rules)
 {
 	int	i;
 

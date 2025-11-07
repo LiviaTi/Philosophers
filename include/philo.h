@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:48:50 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/07 17:38:34 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:42:34 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_init_rules(t_rules *rules);
 t_philo	*ft_init_philos(t_rules *rules);
 void	*ft_routine(void *arg);
 void	ft_eat(t_philo *philo);
-void	ft_get_time(void);
+long	ft_get_time(void);
 void	ft_print_action(t_philo *philo, char *txt);
 void	ft_cleanup(t_rules *rules, t_philo *philos);
 

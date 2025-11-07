@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:46:00 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/07 15:27:58 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/07 15:53:46 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_print_error(t_rules *rules)
 	return (0);
 }
 
-void	cleanup(t_rules *rules, t_philo *philos)
+void	ft_cleanup(t_rules *rules, t_philo *philos)
 {
 	int	i;
 
@@ -53,4 +53,14 @@ void	cleanup(t_rules *rules, t_philo *philos)
 		free(philos);
 		philos = NULL;
 	}
+}
+
+void	ft_get_time(void)
+{
+	struct timeval	current_time;
+	long			time_ms;
+
+	gettimeofday(&current_time, NULL);
+	time_ms = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
+	return ((time_ms));
 }

@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:46:00 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/06 15:53:48 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/07 15:27:58 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_print_error(t_rules *rules)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	write(2, "Error\n", 6);
@@ -23,7 +23,7 @@ int	ft_print_error(t_rules *rules)
 		while (i < rules->num_philos)
 		{
 			pthread_mutex_destroy(&rules->forks[i]);
-			i++;	
+			i++;
 		}
 		free (rules->forks);
 		rules->forks = NULL;

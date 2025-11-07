@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:32:49 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/06 15:49:48 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/07 15:30:03 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 int	main(int argc, char *argv[])
 {
 	t_rules	rules;
-	t_philo *philos;
+	t_philo	*philos;
 
 	if (!parse_args(argc, argv, &rules))
 		return (1);
 	if (!init_rules(&rules))
-		return(1);
+		return (1);
 	philos = init_philos(&rules);
 	if (!philos)
 		return (ft_print_error(&rules));
@@ -32,4 +32,3 @@ int	main(int argc, char *argv[])
 	cleanup(&rules, philos);
 	return (0);
 }
-

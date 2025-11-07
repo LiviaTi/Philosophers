@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:46:00 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/07 17:36:41 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:46:18 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,15 @@ void	ft_cleanup(t_rules *rules, t_philo *philos)
 long	ft_get_time(void)
 {
 	struct timeval	current_time;
-	long			time_ms;
+	long			seconds_ms;
+	long			microseconds_ms;
+	long			total_time_ms;
 
-	time_ms = 0;
 	gettimeofday(&current_time, NULL);
-	time_ms = ((long)current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
-	return (time_ms);
+	seconds_ms = (long)current_time.tv_sec * 1000;
+	microseconds_ms = current_time.tv_usec / 1000;
+	total_time_ms = seconds_ms + microseconds_ms;
+	return (total_time_ms);
 }
 
 void	ft_print_action(t_philo *philo, char *txt)
@@ -76,4 +79,3 @@ void	ft_print_action(t_philo *philo, char *txt)
 	printf("%ld %d %s\n", time, philo->id, txt);
 	pthread_mutex_unlock(&philo->rules->print_mutex);
 }
-

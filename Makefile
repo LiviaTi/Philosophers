@@ -6,7 +6,7 @@
 #    By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/13 16:38:52 by liferrei          #+#    #+#              #
-#    Updated: 2025/11/07 15:35:20 by liferrei         ###   ########.fr        #
+#    Updated: 2025/11/07 17:47:57 by liferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CFLAGS      = -Wall -Wextra -Werror
 SRCS        =	src/parse.c \
 				src/utils.c \
 				src/init_rules \
-				src/init_philos \
+				src/philos \
 				src/routine.c \
             	main.c
 

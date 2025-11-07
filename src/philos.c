@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_philos.c                                      :+:      :+:    :+:   */
+/*   philos.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 15:48:23 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/07 15:29:23 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:49:56 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,31 @@ t_philo	*init_philos(t_rules *rules)
 		i++;
 	}
 	return (philos);
+}
+
+int	ft_create_threads(t_rules *rules, t_philo *philos)
+{
+	int	i;
+
+	i = 0;
+	while (i < rules->num_philos)
+	{
+		if (pthread_create(&philos[i].thread, NULL,
+				ft_routine, &philos[i]) != 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	ft_join_threads(t_rules *rules, t_philo *philos)
+{
+	int	i;
+
+	i = 0;
+	while (i < rules->num_philos)
+	{
+		pthread_join(philos[i].thread, NULL);
+		i++;
+	}
 }

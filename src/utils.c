@@ -6,53 +6,51 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:46:00 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/07 17:46:18 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/10 19:32:26 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	ft_print_error(t_rules *rules)
+int	ft_isnumber(char *str)
 {
 	int	i;
 
 	i = 0;
-	write(2, "Error\n", 6);
-	if (rules && rules->forks)
+	if (!str || !str[0])
+		return (0);
+	while (str[i])
 	{
-		while (i < rules->num_philos)
-		{
-			pthread_mutex_destroy(&rules->forks[i]);
-			i++;
-		}
-		free (rules->forks);
-		rules->forks = NULL;
-		pthread_mutex_destroy(&rules->print_mutex);
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
 	}
-	return (0);
+	return (1);
 }
 
-void	ft_cleanup(t_rules *rules, t_philo *philos)
+long	ft_atol(char *str)
 {
-	int	i;
+	long	num;
+	int		i;
+	long	sign;
 
+	num = 0;
+	sign = 1;
 	i = 0;
-	if (rules->forks)
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		while (i < rules->num_philos)
-		{
-			pthread_mutex_destroy(&rules->forks[i]);
-			i++;
-		}
-		free(rules->forks);
-		rules->forks = NULL;
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
-	pthread_mutex_destroy(&rules->print_mutex);
-	if (philos)
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
-		free(philos);
-		philos = NULL;
+		num = num * 10 + (str[i] - '0');
+		i++;
 	}
+	return (num * sign);
 }
 
 long	ft_get_time(void)
@@ -76,6 +74,7 @@ void	ft_print_action(t_philo *philo, char *txt)
 	time = 0;
 	pthread_mutex_lock(&philo->rules->print_mutex);
 	time = ft_get_time() - philo->rules->start_time;
-	printf("%ld %d %s\n", time, philo->id, txt);
+	if (!philo->rules->dead)
+		printf("[%ld ms] Philosopher %d %s\n", time, philo->id, txt);
 	pthread_mutex_unlock(&philo->rules->print_mutex);
 }

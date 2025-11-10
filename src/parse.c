@@ -6,27 +6,35 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:46:10 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/07 17:40:04 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/10 19:32:52 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	ft_parse_args(int argc, char **argv, t_rules *rules)
+static int	ft_check_argc(int argc)
+{
+	if (argc < 5 || argc > 6)
+		return (0);
+	return (1);
+}
+
+static int	ft_validate_args(int argc, char **argv)
 {
 	int	i;
 
 	i = 1;
-	if (argc < 5 || argc > 6)
-		return (ft_print_error(NULL));
 	while (i < argc)
 	{
-		if (!ft_isnumber(argv[i]))
-			return (ft_print_error(NULL));
-		if (ft_atol(argv[i]) <= 0)
-			return (ft_print_error(NULL));
+		if (!ft_isnumber(argv[i]) || ft_atol(argv[i]) <= 0)
+			return (0);
 		i++;
 	}
+	return (1);
+}
+
+static void	ft_assign_rules(int argc, char **argv, t_rules *rules)
+{
 	rules->num_philos = ft_atol(argv[1]);
 	rules->time_to_die = ft_atol(argv[2]);
 	rules->time_to_eat = ft_atol(argv[3]);
@@ -35,44 +43,14 @@ int	ft_parse_args(int argc, char **argv, t_rules *rules)
 		rules->num_eat = ft_atol(argv[5]);
 	else
 		rules->num_eat = -1;
-	return (1);
 }
 
-int	ft_isnumber(char *str)
+int	ft_parse_args(int argc, char **argv, t_rules *rules)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!(str[i] >= '0' && str[i] <= '9'))
-			return (0);
-		i++;
-	}
+	if (!ft_check_argc(argc))
+		return (ft_print_error(NULL));
+	if (!ft_validate_args(argc, argv))
+		return (ft_print_error(NULL));
+	ft_assign_rules(argc, argv, rules);
 	return (1);
-}
-
-long	ft_atol(char *str)
-{
-	long	num;
-	int		i;
-	long	sign;
-
-	i = 0;
-	num = 0;
-	sign = 1;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
-	{
-		num = num * 10 + (str[i] - '0');
-		i++;
-	}
-	return (sign * num);
 }

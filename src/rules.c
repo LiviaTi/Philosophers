@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 19:02:30 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/10 19:29:23 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/10 19:37:01 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ int	ft_init_rules(t_rules *rules)
 		return (0);
 	return (1);
 }
-

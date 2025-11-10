@@ -6,7 +6,7 @@
 #    By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/13 16:38:52 by liferrei          #+#    #+#              #
-#    Updated: 2025/11/07 17:47:57 by liferrei         ###   ########.fr        #
+#    Updated: 2025/11/10 15:47:48 by liferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ CFLAGS      = -Wall -Wextra -Werror
 
 SRCS        =	src/parse.c \
 				src/utils.c \
-				src/init_rules \
-				src/philos \
+				src/rules.c \
+				src/philos.c \
 				src/routine.c \
             	main.c
 
@@ -33,7 +33,7 @@ OBJS        = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) 
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LNK) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN_BOLD) Philosophers compiled successfully!$(RESET)"
 
 %.o: %.c

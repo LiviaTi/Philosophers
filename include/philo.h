@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:48:50 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/07 17:50:10 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/10 15:48:50 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ typedef struct s_philo
 int		ft_parse_args(int argc, char **argv, t_rules *rules);
 long	ft_atol(char *str);
 int		ft_isnumber(char *str);
-int		ft_print_error(t_rules *rules);
 int		ft_init_rules(t_rules *rules);
+int		ft_print_error(t_rules *rules);
 t_philo	*ft_init_philos(t_rules *rules);
 int		ft_create_threads(t_rules *rules, t_philo *philos);
 void	ft_join_threads(t_rules *rules, t_philo *philos);

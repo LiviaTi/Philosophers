@@ -6,12 +6,11 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 19:47:43 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/11 16:53:38 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/11 19:17:39 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
 
 static int	ft_check_death(t_philo *philo)
 {
@@ -22,7 +21,6 @@ static int	ft_check_death(t_philo *philo)
 	current_time = ft_get_time();
 	diff = current_time - philo->last_meal;
 	pthread_mutex_unlock(&philo->meal_mutex);
-
 	if (diff > philo->rules->time_to_die)
 	{
 		pthread_mutex_lock(&philo->rules->dead_mutex);

@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 15:48:23 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/11 16:23:01 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/11 19:19:01 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_philo	*ft_init_philos(t_rules *rules)
 			philos[i].right_fork = &rules->forks[0];
 		else
 			philos[i].right_fork = &rules->forks[i + 1];
-
 		if (pthread_mutex_init(&philos[i].meal_mutex, NULL) != 0)
 		{
 			int j = i - 1;
@@ -52,7 +51,7 @@ t_philo	*ft_init_philos(t_rules *rules)
 
 int	ft_create_threads(t_rules *rules, t_philo *philos)
 {
-int	i;
+	int	i;
 
 	i = 0;
 	while (i < rules->num_philos)

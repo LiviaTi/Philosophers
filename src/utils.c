@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:46:00 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/11 14:53:26 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/11 19:11:38 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,12 @@ void	ft_print_action(t_philo *philo, char *txt)
 
 	time = 0;
 	pthread_mutex_lock(&philo->rules->print_mutex);
-	time = ft_get_time() - philo->rules->start_time;
+	pthread_mutex_lock(&philo->rules->dead_mutex);
 	if (!philo->rules->dead)
+	{
+		time = ft_get_time() - philo->rules->start_time;
 		printf("[%ld ms] Philosopher %d %s\n", time, philo->id, txt);
+	}
+	pthread_mutex_unlock(&philo->rules->dead_mutex);
 	pthread_mutex_unlock(&philo->rules->print_mutex);
 }

@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 19:02:30 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/10 19:37:01 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/11 16:00:54 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 static int	ft_destroy_forks(t_rules *rules, int last)
 {
-	while (last-- > 0)
-		pthread_mutex_destroy(&rules->forks[last]);
+	int	i;
+
+	i = last - 1;
+	while (i >= 0)
+	{
+		pthread_mutex_destroy(&rules->forks[i]);
+		i--;
+	}
 	free(rules->forks);
 	rules->forks = NULL;
-	return (ft_print_error(rules));
+	return (0);
 }
 
 static int	ft_init_forks(t_rules *rules)
@@ -53,5 +59,7 @@ int	ft_init_rules(t_rules *rules)
 		return (0);
 	if (!ft_init_print_mutex(rules))
 		return (0);
+	if (pthread_mutex_init(&rules->dead_mutex, NULL) != 0)
+		return (ft_destroy_forks(rules, rules->num_philos));
 	return (1);
 }

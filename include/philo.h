@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:48:50 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/11 14:39:33 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/11 15:55:10 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	meal_mutex; 
+	pthread_mutex_t	meal_mutex;
 	t_rules			*rules;
 }					t_philo;
 
@@ -50,15 +50,15 @@ int		ft_parse_args(int argc, char **argv, t_rules *rules);
 long	ft_atol(char *str);
 int		ft_isnumber(char *str);
 int		ft_init_rules(t_rules *rules);
-int		ft_print_error(t_rules *rules);
 t_philo	*ft_init_philos(t_rules *rules);
 int		ft_create_threads(t_rules *rules, t_philo *philos);
 void	ft_join_threads(t_rules *rules, t_philo *philos);
 void	*ft_routine(void *arg);
 void	ft_eat(t_philo *philo);
+void	*ft_monitor(void *arg);
 long	ft_get_time(void);
 void	ft_print_action(t_philo *philo, char *txt);
+int		ft_print_error(t_rules *rules);
 void	ft_cleanup(t_rules *rules, t_philo *philos);
-void	*ft_monitor(void *arg);
 
 #endif

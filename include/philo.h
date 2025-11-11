@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:48:50 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/10 19:50:28 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:39:33 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_rules
 	long			start_time;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	dead_mutex;
+	struct s_philo	*philos;
 }			t_rules;
 
 typedef struct s_philo
@@ -40,6 +42,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	meal_mutex; 
 	t_rules			*rules;
 }					t_philo;
 

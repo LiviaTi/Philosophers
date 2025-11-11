@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:32:49 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/10 19:49:20 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:41:17 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	main(int argc, char *argv[])
 		ft_cleanup(&rules, philos);
 		return (1);
 	}
+	rules.philos = philos;
 	rules.start_time = ft_get_time();
-
 	if (!ft_create_threads(&rules, philos))
 	{
 		ft_print_error(&rules);

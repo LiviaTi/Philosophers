@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:32:49 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/12 00:27:40 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/12 02:21:52 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,15 @@ static t_philo	*ft_setup_philos(t_rules *rules)
 	return (philos);
 }
 
+int	ft_one_philo_case(t_rules *rules)
+{
+	printf("[0 ms] Philosopher 1 has taken a left fork\n");
+	usleep(rules->time_to_die * 1000);
+	printf("[%ld ms] Philosopher 1 died\n", rules->time_to_die);
+	ft_cleanup(rules, NULL);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_rules		rules;
@@ -46,6 +55,8 @@ int	main(int argc, char **argv)
 	philos = NULL;
 	if (!ft_setup_rules(argc, argv, &rules))
 		return (1);
+	if (rules.num_philos == 1)
+		return (ft_one_philo_case(&rules));
 	philos = ft_setup_philos(&rules);
 	if (!philos || !ft_create_threads(&rules, philos)
 		|| pthread_create(&monitor, NULL, ft_monitor, &rules) != 0)

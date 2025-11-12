@@ -6,7 +6,7 @@
 /*   By: liferrei <liferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:46:10 by liferrei          #+#    #+#             */
-/*   Updated: 2025/11/10 19:36:49 by liferrei         ###   ########.fr       */
+/*   Updated: 2025/11/12 02:39:40 by liferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ int	ft_parse_args(int argc, char **argv, t_rules *rules)
 	if (!ft_validate_args(argc, argv))
 		return (ft_print_error(NULL));
 	ft_assign_rules(argc, argv, rules);
+	if (rules->num_philos < 1 || rules->num_philos > 200)
+		return (ft_print_error(NULL));
 	return (1);
 }
